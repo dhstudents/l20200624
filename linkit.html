@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="orders">
+        <a href="#">10271</a>
+        <a href="#">10266</a>
+    </div>
+
+    <script>
+        document.querySelector('#orders')
+        .addEventListener('click' , e => {
+            e.preventDefault();
+            const link = e.target;
+            let orderid = link.textContent
+            alert(orderid);
+
+        })
+    </script>
+</body>
+
+</html>

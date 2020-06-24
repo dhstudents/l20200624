@@ -22,13 +22,13 @@
         function getAllUsers() {
             const xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                //                console.log(JSON.parse(xhr.responseText).data)
+                // console.log(JSON.parse(xhr.responseText).data)
                 const users = JSON.parse(xhr.responseText).data
                 // createTable(users)
                 // createTableForEach(users)
                 createTableMap(users)
             }
-            // xhr.responseType = "application/json"
+
             xhr.open('GET', 'https://reqres.in/api/users')
             xhr.send()
         }

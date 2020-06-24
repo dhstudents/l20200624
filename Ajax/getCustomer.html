@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+
+<body>
+    <button id="get_users">Get Users</button>
+    <hr>
+    <main>
+        <input type="text" id="customerid">
+        <button id="getOne" >Get</button>
+        <hr>
+        <div></div>
+    </main>
+    <script>
+
+        document.querySelector('#getOne')
+            .addEventListener('click', getOneUser)
+
+        
+        function getOneUser() {
+            const xhr = new XMLHttpRequest();
+            let customerId = document.querySelector('#customerid').value
+            let url = "https://northwind.now.sh/api/customers/" + customerId.toUpperCase()
+
+            xhr.open('GET' , url);
+            xhr.onload = function() {
+                let customer = this.responseText
+                document.querySelector('div').textContent = customer;
+            }
+
+            xhr.send();
+        }
+
+
+        
+
+
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>
