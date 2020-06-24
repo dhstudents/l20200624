@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <script>
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+        // https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX
+        // GET POST PUT DELETE PATCH 
+        // false - sync
+        // true - async : default
+        //    xhr.open('GET','http://localhost5500/data.txt')
+//#region Ajax Syncronous
+        // I
+        const xhr = new XMLHttpRequest();
+        // II
+        xhr.open('GET', 'data.txt', false)
+        // III
+        xhr.send();
+        // IV
+        console.log(xhr.responseText);
+        console.log(xhr.status);
+        console.log(xhr.statusText);
+        // V
+        document.querySelector('h1').textContent = xhr.responseText;
+//#endregion        
+    </script>
+</body>
+
+</html>

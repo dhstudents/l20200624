@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+
+<body>
+    <button id="get_users">Get Users</button>
+    <hr>
+    <main>
+
+    </main>
+    <script>
+
+        document.querySelector('#get_users')
+            .addEventListener('click', getAllUsers)
+
+
+        function getAllUsers() {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                //                console.log(JSON.parse(xhr.responseText).data)
+                const users = JSON.parse(xhr.responseText).data
+                // createTable(users)
+                // createTableForEach(users)
+                createTableMap(users)
+            }
+            // xhr.responseType = "application/json"
+            xhr.open('GET', 'https://reqres.in/api/users')
+            xhr.send()
+        }
+
+        function createTableMap(users) {
+            // let buffer = "<table>";
+            let trs = users.map( user => {
+                return `<tr>
+                    <td><img src="${user.avatar}"></td>
+                    <td>${user.email}
+                    <br>
+                    ${user.first_name} ${user.last_name}</td>
+                </tr>`
+            })
+
+            let final = "<table>" + trs.join('') + "</table>"
+            document.querySelector('main').innerHTML = final;
+        }
+
+        function createTableForEach(users) {
+            let buffer = "<table>";
+            users.forEach(user => {
+                buffer += `
+                           <tr>
+                                <td><img src="${user.avatar}"></td>
+                                <td>${user.email}
+                                <br>
+                                ${user.first_name} ${user.last_name}</td>
+                           </tr>`
+            })
+            buffer += "</table>";
+            document.querySelector('main').innerHTML = buffer;
+        }
+
+        function createTable(users) {
+            let buffer = "<table>";
+            for (let i = 0; i < users.length; i++) {
+                let user = users[i];
+                buffer += `
+                           <tr>
+                                <td><img src="${user.avatar}"></td>
+                                <td>${user.email}
+                                <br>
+                                ${user.first_name} ${user.last_name}</td>
+                           </tr>`
+            }
+            buffer += "</table>";
+            document.querySelector('main').innerHTML = buffer;
+        }
+        // https://reqres.in/api/users
+    </script>
+</body>
+
+</html>
